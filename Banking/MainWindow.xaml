@@ -1,0 +1,18 @@
+﻿<Window x:Class="Banking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Banking"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation ="CenterScreen">
+    <Grid>
+        <Button Content="LOGIN" HorizontalAlignment="Left" Height="63" Margin="358,309,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click"/>
+        <TextBox x:Name="unameTbx" HorizontalAlignment="Left" Height="34" Margin="329,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" TextChanged="TextBox_TextChanged" TextAlignment="Center"/>
+        <PasswordBox x:Name="passTbx" Margin="329,229,262,149"/>
+        <Label Content="USERNAME: " Margin="222,139,476,234" FontWeight="Bold"/>
+        <Label Content="PASSWORD:" Margin="222,232,476,140" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
