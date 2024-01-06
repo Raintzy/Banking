@@ -9,7 +9,7 @@
         WindowStartupLocation ="CenterScreen">
     <Grid>
         <Label Content="Balance :  " Margin="33,36,639,313" FontFamily="Arial Black" FontSize="18"/>
-        <Label Content="Amount to Deposit:   " Margin="104,145,490,217" FontFamily="Arial Black" FontSize="18"/>
+        <Label Content="Amount to Deposit:   " Margin="104,145,468,217" FontFamily="Arial Black" FontSize="18"/>
         <TextBox x:Name="dtbx" Margin="337,137,229,247" FontFamily="Arial Rounded MT Bold" FontSize="14" TextAlignment="Center" TextWrapping="Wrap" />
         <Button Content="Deposit" Margin="272,237,272,103" Click="Button_Click"/>
         <Label x:Name="blbl" Content="l" Margin="161,36,383,314" FontFamily="Bahnschrift" FontSize="20" FontWeight="Bold"/>

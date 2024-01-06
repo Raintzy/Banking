@@ -20,8 +20,6 @@ namespace Banking
     /// </summary>
     public partial class Pincode : Window
     {
-        Withdraw withdraw = new Withdraw();
-        Deposit deposit = new Deposit();
         Class1 class1 = new Class1();
 
         public double amount { get; set; }
@@ -32,7 +30,12 @@ namespace Banking
             class1.getUserinfo();
         }
 
-
+        private void updateBalance(double balance)
+        {
+            string[] arrLine = File.ReadAllLines("C:\\Users\\reg_encoder\\Documents\\Example.txt");
+            arrLine[4 - 1] = "Balance: " + balance + ".00";
+            File.WriteAllLines("C:\\Users\\reg_encoder\\Documents\\Example.txt", arrLine);
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -40,20 +43,29 @@ namespace Banking
             {
                 string pincode = _1.Text + _2.Text + _3.Text + _4.Text + _5.Text + _6.Text;
                 int pin = Convert.ToInt32(pincode);
-;                int userpin = Convert.ToInt32(class1.userinfo[2]);
+;               int userpin = Convert.ToInt32(class1.userinfo[2]);
+                double balance1 = Convert.ToDouble(class1.userinfo[3]) - amount;
+
+
                 if (pin == userpin)
                 {
-                    using (StreamWriter writer = new StreamWriter("C:\\Users\\oscar\\Documents\\Output.txt"))
+                    using (StreamWriter writer = new StreamWriter("C:\\Users\\reg_encoder\\Documents\\Output.txt", true))
                     {
-                        writer.WriteLine("Username: " + class1.userinfo[0]);
+                        writer.WriteLine("\nUsername: " + class1.userinfo[0]);
                         writer.WriteLine("Amount Withdrawn: " + amount);
-                        writer.WriteLine("Remaining Balance: " + (Convert.ToDouble(class1.userinfo[3]) - amount));
+                        writer.WriteLine("Remaining Balance: " + balance1);
                         writer.WriteLine("Date: " + DateTime.Now);
                         writer.WriteLine("Transaction: Withdrawal");
                     }
+                    updateBalance(balance1);
+
+                    MessageBox.Show("Amount withdrawn successfully!", "Successful Transaction", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     Homepage homepage = new Homepage();
                     homepage.Show();
                     this.Close();
+
+                    
 
                 }
                 else {
@@ -62,12 +74,32 @@ namespace Banking
             }
             else if (btnid == 2)
             {
-                int pin = Convert.ToInt32(_1.Text) + Convert.ToInt32(_2.Text) + Convert.ToInt32(_3.Text)
-                    + Convert.ToInt32(_4.Text) + Convert.ToInt32(_5.Text) + Convert.ToInt32(_6.Text);
+                string pincode = _1.Text + _2.Text + _3.Text + _4.Text + _5.Text + _6.Text;
+                int pin = Convert.ToInt32(pincode);
                 int userpin = Convert.ToInt32(class1.userinfo[2]);
+                double balance2 = Convert.ToDouble(class1.userinfo[3]) + amount;
                 if (pin == userpin)
                 {
+                    using (StreamWriter writer = new StreamWriter("C:\\Users\\reg_encoder\\Documents\\Output.txt", true))
+                    {
+                        
+                        writer.WriteLine("Username: " + class1.userinfo[0]);
+                        writer.WriteLine("Amount Withdrawn: " + amount);
+                        writer.WriteLine("Remaining Balance: " + balance2);
+                        writer.WriteLine("Date: " + DateTime.Now);
+                        writer.WriteLine("Transaction: Deposit");
+                        writer.WriteLine("");
+                    }
 
+                    updateBalance(balance2);
+
+                    MessageBox.Show("Amount deposited successfully!", "Successful Transaction", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    Homepage homepage = new Homepage();
+                    homepage.Show();
+                    this.Close();
+
+                    
                 }
             }
 

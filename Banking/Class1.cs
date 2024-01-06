@@ -15,7 +15,7 @@ namespace Banking
 
         public void getUserinfo()
         {
-            string filePath = "C:\\Users\\oscar\\Documents\\Example.txt";
+            string filePath = "C:\\Users\\reg_encoder\\Documents\\Example.txt";
             string separator = ""; // Change this to your desired separator
             int i = 0;                       // Read the file and process its content
             try

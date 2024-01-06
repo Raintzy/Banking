@@ -21,9 +21,6 @@ namespace Banking
     {
         Class1 class1 = new Class1();
 
-        public double balance, damount;
-
-        public int btnid = 0;
         public Deposit()
         {
             InitializeComponent();
@@ -34,6 +31,8 @@ namespace Banking
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Pincode pincode = new Pincode();
+            pincode.amount = Convert.ToDouble(dtbx.Text);
+            pincode.btnid = 2;
             pincode.Show();
             this.Close();
         }
